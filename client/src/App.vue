@@ -16,20 +16,20 @@
 
 <script>
 export default {
-  name: 'App',
-  data () {
+  name: "App",
+  data() {
     return {
       isEven: true
-    }
+    };
   }
-}
+};
 </script>
 
 <style>
-@import './assets/chartist.min.css';
+@import "./assets/chartist.min.css";
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

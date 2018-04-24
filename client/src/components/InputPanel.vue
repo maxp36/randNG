@@ -9,6 +9,10 @@
         <div v-if="!isEven">Мат. ожидание: <input v-model.number="mean"></div>
         <div v-if="!isEven">Среднее отклонение: <input v-model.number="dev"></div>
         <div>Количество столбцов: <input v-model.number="column"></div>
+        <div>
+          <button class="waves-effect waves-light btn-small" @click="generateEven" v-if="isEven">Сгенерировать</button>
+          <button class="waves-effect waves-light btn-small" @click="generateNormal" v-if="!isEven">Сгенерировать</button>
+        </div>
       </div>
     </div>
   </div>
@@ -40,8 +44,25 @@ export default {
       "setTo",
       "setColumn",
       "setMean",
-      "setDev"
-    ])
+      "setDev",
+      "setEvenCurrentNumber",
+      "changeEvenIsChanged",
+      "setNormalCurrentNumber",
+      "changeNormalIsChanged"
+    ]),
+    generateEven: function() {
+      // this.setSeed(this.seed);
+      // this.setNumber(this.number);
+      // this.setFrom(this.from);
+      // this.setTo(this.to);
+      // this.setColumn(this.column);
+      // this.setMean(this.mean);
+      // this.setDev(this.dev);
+      this.changeEvenIsChanged();
+    },
+    generateNormal: function() {
+      this.changeNormalIsChanged();
+    }
   },
   watch: {
     seed: function(newNumber, oldNumber) {
@@ -49,6 +70,8 @@ export default {
     },
     number: function(newNumber, oldNumber) {
       this.setNumber(newNumber);
+      this.setEvenCurrentNumber(newNumber);
+      this.setNormalCurrentNumber(newNumber);
     },
     from: function(newNumber, oldNumber) {
       this.setFrom(newNumber);
@@ -71,4 +94,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 </style>

@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "chartist-plugin-axistitle": "0.0.4",
+    "chartist-plugin-targetline": "^1.0.1",
     "vue": "^2.5.2",
     "vue-chartist": "^2.1.2",
     "vue-router": "^3.0.1",

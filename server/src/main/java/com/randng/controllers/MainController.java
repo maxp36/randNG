@@ -29,12 +29,16 @@ public class MainController {
         float theorDistribution = g.getTheorDistribution(from, to);
         double m = g.getMean();
         double d = g.getDev();
+        double theorMean = g.getTheorMean();
+        double theorDev = g.getTheorDev();
 
         EvenData data = new EvenData(manyEvenFromTo,
                 distribution,
                 theorDistribution,
                 m,
-                d);
+                d,
+                theorMean,
+                theorDev);
 
         return new ResponseEntity<>(data, HttpStatus.OK);
     }
@@ -61,6 +65,8 @@ public class MainController {
                 theorDistribution,
                 m,
                 d,
+                mean,
+                dev,
                 minValue,
                 maxValue);
 

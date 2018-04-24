@@ -18,6 +18,8 @@ public class EvenGenerator {
 
     private double mean;
     private double dev;
+    private double theorMean;
+    private double theorDev;
 
     public EvenGenerator(int seed) {
         this.seed = seed;
@@ -96,6 +98,9 @@ public class EvenGenerator {
             to = temp;
         }
 
+        theorMean = (to - from) / 2 + from;
+        theorDev = (theorMean - from) / 2;
+
         List<Float> tempNumbers = new ArrayList<>();
 
         float size = (to - from) / columnCount;
@@ -142,5 +147,13 @@ public class EvenGenerator {
 
     public double getDev() {
         return dev;
+    }
+
+    public double getTheorMean() {
+        return theorMean;
+    }
+
+    public double getTheorDev() {
+        return theorDev;
     }
 }
