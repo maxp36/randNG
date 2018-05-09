@@ -58,7 +58,7 @@ public class MainController {
         double minValue = g.getMinValue();
         double maxValue = g.getMaxValue();
         List<Double> distribution = g.getDistribution(m, d, column, manyNormal);
-        List<Double> theorDistribution = g.getDistribution(mean, dev, column, manyNormal);
+        List<Double> theorDistribution = g.getTheorDistribution(mean, dev, column, manyNormal);
 
         NormalData data = new NormalData(manyNormal,
                 distribution,

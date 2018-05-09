@@ -148,6 +148,15 @@ export default {
         //   low: 0
         // },
 
+        axisX: {
+          labelInterpolationFnc: function(value, index, labels) {
+            return (index + 1) % ((labels.length - labels.length % 10) / 10) === 0 ||
+              index === 0
+              ? value
+              : null;
+          }
+        },
+
         showPoint: false,
 
         series: {
@@ -156,7 +165,7 @@ export default {
             showArea: true
           },
           theor: {
-            lineSmooth: this.$chartist.Interpolation.step(),
+            // lineSmooth: this.$chartist.Interpolation.step(),
             showArea: true
           }
         },
@@ -299,7 +308,7 @@ export default {
         labels: this.toLabelWithColumn(
           this.normalData.minValue,
           this.normalData.maxValue,
-          this.column
+          this.column * 10
         )
       };
     }

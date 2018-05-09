@@ -1,11 +1,13 @@
 package com.randng.utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NormalGenerator {
 
     private boolean ready = false;
+    private int STEP_SIZE = 10;
 
     private double second;
     private double minValue = Double.MAX_VALUE;
@@ -121,10 +123,32 @@ public class NormalGenerator {
             }
 
             if (count == 0) {
-                tempNumbers.add(0.0);
+                for(int k = 0; k < STEP_SIZE; k++) {
+                    tempNumbers.add(0.0);
+                }
             } else {
-                tempNumbers.add(sum / count);
+                for(int k = 0; k < STEP_SIZE; k++) {
+                    tempNumbers.add(sum / count);
+                }
             }
+        }
+
+        return tempNumbers;
+    }
+
+    public List<Double> getTheorDistribution(double m, double d, int columnCount, List<Double> numbers) {
+
+        double temp;
+        List<Double> vars = new ArrayList<>(numbers);
+        Collections.sort(vars);
+        List<Double> tempNumbers = new ArrayList<>();
+
+        for (double current = minValue;
+             current < maxValue;
+             current += (maxValue - minValue) / (STEP_SIZE * columnCount)) {
+            temp = Math.exp(-((current - m) * (current - m)) / (2 * d * d)) /
+                    (d * Math.sqrt(2 * Math.PI));
+            tempNumbers.add(temp);
         }
 
         return tempNumbers;

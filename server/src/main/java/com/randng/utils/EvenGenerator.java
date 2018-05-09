@@ -71,7 +71,7 @@ public class EvenGenerator {
         List<Integer> tempNumbers = new ArrayList<>();
 
         for (Integer n : numbers) {
-            temp = (n % (to - from) + from);
+            temp = (n % (to - from + 1) + from);
             mean += temp;
             tempNumbers.add(temp);
         }
@@ -98,12 +98,12 @@ public class EvenGenerator {
             to = temp;
         }
 
-        theorMean = (to - from) / 2 + from;
+        theorMean = (double)(to - from) / 2 + from;
         theorDev = (theorMean - from) / 2;
 
         List<Float> tempNumbers = new ArrayList<>();
 
-        float size = (to - from) / columnCount;
+        float size = (float)(to - from) / columnCount;
         int count;
 
         for (int i = 0; i < columnCount; i++) {
