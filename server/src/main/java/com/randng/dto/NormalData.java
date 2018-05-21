@@ -13,6 +13,9 @@ public class NormalData {
     public double theorDev;
     public double minValue;
     public double maxValue;
+    public double x2;
+    public double theorX2;
+    public boolean testTheor;
 
     public NormalData(List<Double> manyNormal,
                       List<Double> distribution,
@@ -22,7 +25,10 @@ public class NormalData {
                       double theorMean,
                       double theorDev,
                       double minValue,
-                      double maxValue) {
+                      double maxValue,
+                      double x2,
+                      double theorX2,
+                      boolean testTheor) {
         this.manyNormal = manyNormal;
         this.distribution = distribution;
         this.theorDistribution = theorDistribution;
@@ -32,5 +38,8 @@ public class NormalData {
         this.theorDev = theorDev;
         this.minValue = minValue;
         this.maxValue = maxValue;
+        this.x2 = x2;
+        this.theorX2 = theorX2;
+        this.testTheor = testTheor;
     }
 }

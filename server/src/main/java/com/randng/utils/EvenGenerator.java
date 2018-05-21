@@ -88,7 +88,7 @@ public class EvenGenerator {
         return tempNumbers;
     }
 
-    // Генерация данных нормального распределения,
+    // Генерация данных равномерного распределения,
     // необходимых для построения гистограммы
     public List<Float> getDistribution(int num, int from, int to, int columnCount, List<Integer> numbers) {
 

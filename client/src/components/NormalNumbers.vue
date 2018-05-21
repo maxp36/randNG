@@ -45,6 +45,18 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col s12">
+          <h4>Оценка выборки по критерию согласия Пирсона</h4>
+          <p>Число степеней свободы k = {{ this.column - 3 }}</p>
+          <p>Уровень значимости критерия p = {{ this.sLevel }}</p>
+          <p>Расчетный критерий: {{ (this.normalData.x2).toFixed(8) }}</p>
+          <p>Табличное значение критерия при k и p: {{ this.normalData.theorX2 }}</p>
+          <p v-if="this.normalData.testTheor">Расчетный критерий оказался меньшим,чем табличное значение, значит гипотеза о равенстве (согласии) частот верна.</p>
+          <p v-else>Расчетный критерий оказался большим,чем табличное значение, значит гипотеза о равенстве (согласии) частот неверна.</p>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -205,6 +217,7 @@ export default {
       "column",
       "mean",
       "dev",
+      "sLevel",
       "normalCurrentNumber",
       "normalCount",
       "normalAverageMean",
@@ -368,7 +381,7 @@ export default {
     getData: function() {
       var url = `http://localhost:8080/normal/?seed=${this.seed}&num=${
         this.number
-      }&mean=${this.mean}&dev=${this.dev}&column=${this.column}`;
+      }&mean=${this.mean}&dev=${this.dev}&column=${this.column}&sLevel=${this.sLevel}`;
 
       axios.get(url).then(response => {
         this.normalData = response.data;

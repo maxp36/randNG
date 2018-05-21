@@ -28,6 +28,7 @@ const store = new Vuex.Store({
     column: 10,
     mean: 0.0,
     dev: 1.0,
+    sLevel: 0.005,
 
     evenIsChanged: true,
     evenCurrentNumber: 100,
@@ -97,6 +98,21 @@ const store = new Vuex.Store({
     setDev(state, n) {
       if (state.dev !== n) {
         state.dev = n;
+        state.normalCount = 0;
+        state.normalAverageMean = 0.0;
+        state.normalAverageDev = 0.0;
+        state.normalSumMean = 0.0;
+        state.normalSumDev = 0.0;
+      }
+    },
+    setSLevel(state, n) {
+      if (state.sLevel !== n) {
+        state.sLevel = n;
+        state.evenCount = 0;
+        state.evenAverageMean = 0.0;
+        state.evenAverageDev = 0.0;
+        state.evenSumMean = 0.0;
+        state.evenSumDev = 0.0;
         state.normalCount = 0;
         state.normalAverageMean = 0.0;
         state.normalAverageDev = 0.0;

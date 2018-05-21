@@ -154,6 +154,36 @@ public class NormalGenerator {
         return tempNumbers;
     }
 
+    public List<Double> getSplittedDistribution(int columnCount, List<Double> numbers) {
+
+        double sum;
+        int count;
+
+        int size = STEP_SIZE;
+
+        List<Double> tempNumbers = new ArrayList<>();
+
+        for (int i = 0; i < columnCount; i++) {
+
+            int start = size * i;
+            int end = start + size;
+
+            sum = 0;
+            count = 0;
+
+            List<Double> vars = numbers.subList(start, end);
+
+            for (Double n : vars) {
+                count++;
+                sum += n;
+            }
+
+            tempNumbers.add(sum / count);
+        }
+
+        return tempNumbers;
+    }
+
     public double getMean() {
         return mean;
     }

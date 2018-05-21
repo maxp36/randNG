@@ -10,6 +10,25 @@
         <div v-if="!isEven">Среднее отклонение: <input v-model.number="dev"></div>
         <div>Количество столбцов: <input v-model.number="column"></div>
         <div>
+          Уровень значимости критерия Пирсона:
+          <select v-model.number="sLevel">
+            <option value="0.005" selected>0.005</option>
+            <option value="0.01">0.01</option>
+            <option value="0.025">0.025</option>
+            <option value="0.05">0.05</option>
+            <option value="0.1">0.1</option>
+            <option value="0.25">0.25</option>
+            <option value="0.5">0.5</option>
+            <option value="0.75">0.75</option>
+            <option value="0.9">0.9</option>
+            <option value="0.95">0.95</option>
+            <option value="0.975">0.975</option>
+            <option value="0.99">0.99</option>
+            <option value="0.995">0.995</option>
+          </select>
+          <br>
+        </div>
+        <div>
           <button class="waves-effect waves-light btn-small" @click="generateEven" v-if="isEven">Сгенерировать</button>
           <button class="waves-effect waves-light btn-small" @click="generateNormal" v-if="!isEven">Сгенерировать</button>
         </div>
@@ -33,7 +52,8 @@ export default {
       to: 1000,
       column: 10,
       mean: 0.0,
-      dev: 1.0
+      dev: 1.0,
+      sLevel: 0.005
     };
   },
   methods: {
@@ -45,6 +65,7 @@ export default {
       "setColumn",
       "setMean",
       "setDev",
+      "setSLevel",
       "setEvenCurrentNumber",
       "changeEvenIsChanged",
       "setNormalCurrentNumber",
@@ -87,6 +108,9 @@ export default {
     },
     dev: function(newNumber, oldNumber) {
       this.setDev(newNumber);
+    },
+    sLevel: function(newNumber, oldNumber) {
+      this.setSLevel(newNumber);
     }
   }
 };
@@ -94,5 +118,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  select {
+    display: block
+  }
 </style>

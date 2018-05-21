@@ -11,6 +11,9 @@ public class EvenData {
     public double dev;
     public double theorMean;
     public double theorDev;
+    public double x2;
+    public double theorX2;
+    public boolean testTheor;
 
     public EvenData(List<Integer> manyEvenFromTo,
                     List<Float> distribution,
@@ -18,7 +21,10 @@ public class EvenData {
                     double mean,
                     double dev,
                     double theorMean,
-                    double theorDev) {
+                    double theorDev,
+                    double x2,
+                    double theorX2,
+                    boolean testTheor) {
         this.manyEvenFromTo = manyEvenFromTo;
         this.distribution = distribution;
         this.theorDistribution = theorDistribution;
@@ -26,5 +32,8 @@ public class EvenData {
         this.dev = dev;
         this.theorMean = theorMean;
         this.theorDev = theorDev;
+        this.x2 = x2;
+        this.theorX2 = theorX2;
+        this.testTheor = testTheor;
     }
 }

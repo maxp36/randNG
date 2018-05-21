@@ -47,6 +47,18 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col s12">
+          <h4>Оценка выборки по критерию согласия Пирсона</h4>
+          <p>Число степеней свободы k = {{ this.column - 1 }}</p>
+          <p>Уровень значимости критерия p = {{ this.sLevel }}</p>
+          <p>Расчетный критерий: {{ (this.evenData.x2).toFixed(8) }}</p>
+          <p>Табличное значение критерия при k и p: {{ this.evenData.theorX2 }}</p>
+          <p v-if="this.evenData.testTheor">Расчетный критерий оказался меньшим,чем табличное значение, значит гипотеза о равенстве (согласии) частот верна.</p>
+          <p v-else>Расчетный критерий оказался большим,чем табличное значение, значит гипотеза о равенстве (согласии) частот неверна.</p>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -202,6 +214,7 @@ export default {
       "from",
       "to",
       "column",
+      "sLevel",
       "evenCurrentNumber",
       "evenCount",
       "evenAverageMean",
@@ -368,7 +381,7 @@ export default {
     getData: function() {
       var url = `http://localhost:8080/even/?seed=${this.seed}&num=${
         this.number
-      }&from=${this.from}&to=${this.to}&column=${this.column}`;
+      }&from=${this.from}&to=${this.to}&column=${this.column}&sLevel=${this.sLevel}`;
 
       axios.get(url).then(response => {
         this.evenData = response.data;
